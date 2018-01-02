@@ -18,6 +18,11 @@ import android.util.Log;
 import com.example.anmol.missplace.Credential.SavingData;
 import com.example.anmol.missplace.Credential.SecurityPinNo;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.Calendar;
+
 public class smsReceiver extends BroadcastReceiver {
 
     final SmsManager sms = SmsManager.getDefault();
@@ -63,7 +68,26 @@ public class smsReceiver extends BroadcastReceiver {
 
                     // Saving Message
                     SavingData sd = new SavingData(context);
-                    sd.saveData(message);
+                    String a =sd.getData();
+                    Calendar cal = Calendar.getInstance();
+                    if (a.equals("")){
+                     JSONObject jsonObject =new JSONObject();
+                     jsonObject.put("msg",message);
+                     jsonObject.put("month",cal.get(Calendar.MONTH));
+                     jsonObject.put("date",cal.get(Calendar.DATE));
+                     JSONArray jsonArray = new JSONArray();
+                     jsonArray.put(jsonObject);
+                     sd.saveData(jsonArray);
+                    }
+                    else{
+                        JSONArray jsonArray =new JSONArray(a);
+                        JSONObject jsonObject = new JSONObject();
+                        jsonObject.put("msg",message);
+                        jsonObject.put("month",cal.get(Calendar.MONTH));
+                        jsonObject.put("date",cal.get(Calendar.DATE));
+                        jsonArray.put(jsonObject);
+                        sd.saveData(jsonArray);
+                    }
 
                 }
             }

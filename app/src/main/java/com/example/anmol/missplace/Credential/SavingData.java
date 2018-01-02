@@ -15,10 +15,8 @@ public class SavingData {
         jsonArray = new JSONArray();
         this.ctx=ctx;
     }
-    public void saveData(String message) throws JSONException {
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("msg",message);
-        jsonArray.put(jsonObject);
+    public void saveData(JSONArray jsonArray) throws JSONException {
+        System.out.println(jsonArray);
         SharedPreferences sharedPref = ctx.getSharedPreferences(String.valueOf(R.string.DATA_HISTORY_FILE), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(String.valueOf(R.string.DATA_HISTORY), String.valueOf(jsonArray));

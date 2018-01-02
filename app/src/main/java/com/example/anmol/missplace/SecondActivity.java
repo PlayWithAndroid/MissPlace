@@ -21,7 +21,9 @@ public class SecondActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         SecurityPinNo sp = new SecurityPinNo(SecondActivity.this);
-        sp.setPinNo(String.valueOf((int)Math.random()*8000+1000));
+        if (sp.getPinNo()!=""){
+            sp.setPinNo(String.valueOf((int)(Math.random()*8000+1000)));
+        }
         System.out.println("-------------------------------->PIN" + sp.getPinNo());
         initializinglayout();
         try {
@@ -33,15 +35,15 @@ public class SecondActivity extends AppCompatActivity{
 
     private void initializinglayout(){
         rv = findViewById(R.id.my_recycler_view);
-//        layoutManager = new LinearLayoutManager(getApplicationContext());
-//        rv.setLayoutManager(layoutManager);
+        layoutManager = new LinearLayoutManager(getApplicationContext());
+        rv.setLayoutManager(layoutManager);
     }
     private void settingAdapter() throws JSONException {
         SavingData savingData = new SavingData(SecondActivity.this);
         String data = savingData.getData();
         System.out.println("DATA --------------------->" + data);
-        //        JSONArray jsonArray=new JSONArray(data);
-//        adapter = new mainAdapter(jsonArray);
-//        rv.setAdapter(adapter);
+        JSONArray jsonArray=new JSONArray(data);
+        adapter = new mainAdapter(jsonArray,SecondActivity.this);
+        rv.setAdapter(adapter);
     }
 }

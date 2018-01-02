@@ -10,9 +10,7 @@ import android.widget.Toast;
 import com.example.anmol.missplace.MainActivity;
 
 public class smsSend {
-    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0;
     Context ctx;
-
     // Constructor
     public smsSend(Context ctx) {
         this.ctx = ctx;
