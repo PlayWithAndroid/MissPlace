@@ -8,33 +8,45 @@ import android.widget.TextView;
 
 import com.example.anmol.missplace.R;
 
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 
 public class mainAdapter extends RecyclerView.Adapter<mainAdapter.ViewHolder> {
 
+    JSONArray jsonArray;
 
-// Constructor
-     public mainAdapter()
+    // Constructor
+     public mainAdapter(JSONArray jsonArray)
         {
-
+            this.jsonArray=jsonArray;
         }
 
 /*
    View Holder class to instantiate views
  */
-class ViewHolder extends RecyclerView.ViewHolder{
-
-    //View Holder Class Constructor
-    public ViewHolder(View itemView)
+    class ViewHolder extends RecyclerView.ViewHolder{
+        //View Holder Class Constructor
+       public ViewHolder(View itemView)
     {
         super(itemView);
     }
-}
+    }
 
+    @Override
+    public int getItemViewType(int position) {
+        return position%2;
+    }
 
     @Override
     public mainAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.card_first,parent,false));
+        switch (viewType){
+            case 0:
+                return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.card_first,parent,false));
+            case 1:
+                return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.card_layout,parent,false));
+        }
+        return null;
     }
 
     @Override
@@ -46,6 +58,6 @@ class ViewHolder extends RecyclerView.ViewHolder{
     @Override
     public int getItemCount()
     {
-        return 0;
+        return jsonArray.length()+1;
     }
 }

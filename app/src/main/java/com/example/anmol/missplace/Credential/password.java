@@ -7,7 +7,7 @@ import com.example.anmol.missplace.R;
 
 public class password {
     Context ctx;
-    private password(Context ctx){
+    public password(Context ctx){
         this.ctx=ctx;
     }
     public void setPass(String pass){

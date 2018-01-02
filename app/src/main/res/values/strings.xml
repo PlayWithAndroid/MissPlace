@@ -4,4 +4,6 @@
     <string name="Password_FILE">PASSWORD_FILE</string>
     <string name="Pin">PinNumber</string>
     <string name="PIN_FILE">PIN_FILE</string>
+    <string name="DATA_HISTORY">DATA_HISTORY</string>
+    <string name="DATA_HISTORY_FILE">DATA_HISTORY_FILE</string>
 </resources>
