@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MissPlace</string>
+    <string name="Password">PASSWORD</string>
+    <string name="Password_FILE">PASSWORD_FILE</string>
+    <string name="Pin">PinNumber</string>
+    <string name="PIN_FILE">PIN_FILE</string>
 </resources>
