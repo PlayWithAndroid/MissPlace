@@ -3,7 +3,6 @@ package com.example.anmol.missplace.SMS;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.telephony.SmsManager;
 import android.widget.Toast;
 

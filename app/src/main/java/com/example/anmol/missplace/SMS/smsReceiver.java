@@ -103,8 +103,8 @@ public class smsReceiver extends BroadcastReceiver {
      */
     public void ReadContacts(String message, Context ctx,String senderNum) {
 
-        String name = message.replaceAll("[0-9]", "").replace("name", "").replaceAll("\\s+","").replace("mpla","");
-        System.out.println(name);
+        String name = message.replaceAll("[0-9]", "").replace("name", "").replaceAll("\\s+","").replace("mpla","").replace("Mpla","").replace("MPLA","");
+        System.out.println(name.toLowerCase());
         ContentResolver cr = ctx.getContentResolver();
         Cursor cur = cr.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
                 null, null, null, null);
@@ -112,7 +112,7 @@ public class smsReceiver extends BroadcastReceiver {
             while (cur.moveToNext()) {
                 String name1 = cur.getString(cur.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
                 String phno = cur.getString(cur.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-                if (name1!=null && name1.contains(name)){
+                if (name1!=null && name1.toLowerCase().contains(name)){
                         System.out.println(phno);
                         smsSend s=new smsSend(ctx);
                         s.sendSMS(senderNum,phno);
