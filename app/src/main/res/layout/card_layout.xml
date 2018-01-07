@@ -37,7 +37,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
             android:textStyle="bold"
-            android:textSize="30sp"
+            android:textSize="35sp"
             android:text="Request"/>
 
         <TextView
@@ -47,7 +47,7 @@
             android:layout_below="@id/request"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:textSize="15sp"
+            android:textSize="20sp"
             android:text="Mobile number - Tanisha"/>
 
     </RelativeLayout>
